@@ -1,0 +1,15 @@
+# action.yml
+name: 'Terraform Workspace setup'
+description: 'Setup a Terraform Cloud/Enterprise workspace'
+inputs:
+  organization:
+    description: 'Terraform Organization name'
+    required: true
+outputs:
+  workspace_id:
+    description: 'The created or updated Terraform workspace ID'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.organization }}
