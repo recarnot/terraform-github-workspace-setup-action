@@ -2,7 +2,7 @@
 
 echo "Organization $1"
 echo "Workspace $2"
-
+echo "Token $3"
 
 sed "s/T_WS/$2/" < ./template/workspace.payload.template > workspace.json
 curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://app.terraform.io/api/v2/organizations/$1/workspaces" > workspace_result
