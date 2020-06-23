@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: actions/terraform-workspace-setup@master
+        uses: ./
         with:
           organization: 'Romain'
 
