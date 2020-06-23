@@ -12,7 +12,7 @@ jobs:
         id: workspace
         uses: ./
         with:
-          organization: "terraform-deepdive"
+          organization: ${{ secrets.TF_ORGANIZATION }}
           workspace: "sample-actions2"
           token: ${{ secrets.TF_API_TOKEN }}
 
