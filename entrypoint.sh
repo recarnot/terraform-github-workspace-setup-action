@@ -14,6 +14,9 @@ curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd
 cat vars.json
 
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
+
+echo $x
+
 for (( i=0; i<$x; i++ ))
 do
   curl --header "Authorization: Bearer $1" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/vars/$(cat vars.json | jq -r ".data[$i].id")
