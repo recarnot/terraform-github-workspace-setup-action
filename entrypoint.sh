@@ -15,7 +15,7 @@ cat vars.json
 
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
 
-echo $x
+echo "to clean $x"
 
 for (( i=0; i<$x; i++ ))
 do
