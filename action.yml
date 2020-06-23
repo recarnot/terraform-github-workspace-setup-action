@@ -5,6 +5,12 @@ inputs:
   organization:
     description: 'Terraform Organization name'
     required: true
+  workspace:
+    description: 'Terraform Workspace name'
+    required: true
+  token:
+    description: 'Terraform Cloud/Enterprise API token'
+    required: true
 outputs:
   workspace_id:
     description: 'The created or updated Terraform workspace ID'
@@ -13,3 +19,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.organization }}
+    - ${{ inputs.workspace }}
+    - ${{ inputs.token }}
