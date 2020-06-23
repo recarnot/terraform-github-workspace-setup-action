@@ -13,7 +13,7 @@ jobs:
         uses: ./
         with:
           organization: "terraform-deepdive"
-          workspace: "sample-actions1"
+          workspace: "sample-actions2"
           token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Get the output time
