@@ -9,7 +9,7 @@ inputs:
     description: 'Terraform Workspace name'
     required: true
   token:
-    description: 'Terraform Cloud/Enterprise API token'
+    description: 'Terraform API token'
     required: true
 outputs:
   workspace_id:
