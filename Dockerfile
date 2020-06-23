@@ -1,9 +1,7 @@
-FROM alpine:3.10
+FROM ubuntu
 
 COPY entrypoint.sh /entrypoint.sh
 COPY ./template .
 
-RUN apk update && \
-    apk add curl jq
 
 ENTRYPOINT ["/entrypoint.sh"]
