@@ -12,9 +12,9 @@ jobs:
         id: hello
         uses: ./
         with:
-          organization: 'terraform-deepdive'
-          workspace: 'sample-actions1'
-          token: ${{ secrets.TF_API_TOKEN }}"
+          organization: "terraform-deepdive"
+          workspace: "sample-actions1"
+          token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Get the output time
         run: echo "The workspace ID is ${{ steps.hello.outputs.workspace_id }}"
