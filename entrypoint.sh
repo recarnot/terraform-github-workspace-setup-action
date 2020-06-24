@@ -19,10 +19,11 @@ echo "::set-output name=workspace_id::$wid"
 for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     value=$(jq -r ".vars[$k]" /github/workspace/variables.json);
 
-    key=$(jq -r '.key' <<< "$value");
-    value=$(jq -r '.value' <<< "$value");
-    sensitive=$(jq -r '.sensitive' <<< "$value");
-    printf '%s\t%s\t%s\n' "$key" "$value" "$sensitive";
+    echo $value
+    #key=$(jq -r '.key' <<< "$value");
+    #value=$(jq -r '.value' <<< "$value");
+    #sensitive=$(jq -r '.sensitive' <<< "$value");
+    #printf '%s\t%s\t%s\n' "$key" "$value" "$sensitive";
 done | column -t -s$'\t'
 
 
