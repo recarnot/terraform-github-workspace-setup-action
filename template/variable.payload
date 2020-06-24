@@ -2,11 +2,11 @@
   "data": {
     "type": "vars",
     "attributes": {
-      "key": "T_KEY",
-      "value": "T_VALUE",
+      "key": T_KEY,
+      "value": T_VALUE,
       "category": "terraform",
       "hcl": false,
-      "sensitive": "T_SECURED"
+      "sensitive": T_SECURED
     },
     "relationships": {
       "workspace": {
