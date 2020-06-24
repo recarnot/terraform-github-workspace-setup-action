@@ -6,6 +6,10 @@ TF_TOKEN=$(echo $3)
 echo "{ \"vars\":[ $4 ]}" > variables.json
 TF_HOST=$(echo $5)
 
+echo -e "\n Hostname=$TF_HOST"
+echo -e "\n Organisation=$TF_ORGA"
+echo -e "\n Workspace=$TF_TF_WS"
+
 #Create workspace
 sed "s/T_WS/$TF_WS/" < /tmp/workspace.payload > workspace.json
 curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://$TF_HOST/api/v2/organizations/$TF_ORGA/workspaces" > workspace_result
