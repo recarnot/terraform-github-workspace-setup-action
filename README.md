@@ -1,8 +1,9 @@
 # Terraform Cloud/Enterprise workspace setup
 **GitHub Action** to set up **Terraform Cloud/Enterprise** workspace
 
-![Setup Workspace](https://github.com/recarnot/terraform-github-workspace-setup-action/workflows/Setup%20Workspace/badge.svg)
-
+<p align="left">
+  <a href="https://github.com/recarnot/terraform-github-workspace-setup-action/actions"><img alt="Continuous Integration" src="https://github.com/recarnot/terraform-github-workspace-setup-action/workflows/Setup%20Workspace/badge.svg" /></a>
+</p>
 
 ## Inputs
 
