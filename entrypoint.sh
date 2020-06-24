@@ -40,3 +40,5 @@ for k in $(jq '.vars | keys | .[]' variables.json); do
     sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < /tmp/variable.payload  > paylaod.json
     curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://$TF_HOST/api/v2/workspaces/$wid/vars"
 done
+
+echo -e "\n Workspace ID=$wid"
