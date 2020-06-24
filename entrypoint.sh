@@ -9,7 +9,7 @@ TF_HOST=$(echo $5)
 #Create workspace
 printf "\n%s" "$TF_WS"
 sed "s/T_WS/$TF_WS/" < /tmp/workspace.payload > workspace.json
-curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://$TF_HOST/api/v2/organizations/$TF_ORGA/workspaces" > logs.txt
+curl -s --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://$TF_HOST/api/v2/organizations/$TF_ORGA/workspaces" > logs.txt
 
 #Retreive Workspace ID
 wid=$(curl -s --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" "https://$TF_HOST/api/v2/organizations/$TF_ORGA/workspaces/$TF_WS" | jq -r .data.id)
@@ -17,12 +17,12 @@ echo "::set-output name=workspace_id::$wid"
 
 #Clean existing variables
 printf "\nClear existing variables"
-curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" "https://$TF_HOST/api/v2/workspaces/$wid/vars" > vars.json
+curl -s --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" "https://$TF_HOST/api/v2/workspaces/$wid/vars" > vars.json
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
 i=0
 while [ $i -lt $x ]
 do
-  curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE "https://$TF_HOST/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")" > logs.txt
+  curl -s --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE "https://$TF_HOST/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")" > logs.txt
   i=`expr $i + 1`
 done
 
@@ -37,5 +37,5 @@ for k in $(jq '.vars | keys | .[]' variables.json); do
 
     printf "\nCreate variable %s" "$key"
     sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < /tmp/variable.payload  > paylaod.json
-    curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://$TF_HOST/api/v2/workspaces/$wid/vars" > log.txt
+    curl -s --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://$TF_HOST/api/v2/workspaces/$wid/vars" > log.txt
 done
