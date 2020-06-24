@@ -1,0 +1,20 @@
+{
+  "data": {
+    "type": "vars",
+    "attributes": {
+      "key": "T_KEY",
+      "value": "T_VALUE",
+      "category": "terraform",
+      "hcl": false,
+      "sensitive": "T_SECURED"
+    },
+    "relationships": {
+      "workspace": {
+        "data": {
+          "id": "T_WSID",
+          "type": "workspaces"
+        }
+      }
+    }
+  }
+}
