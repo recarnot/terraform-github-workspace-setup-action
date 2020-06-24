@@ -20,7 +20,7 @@ for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     value=$(jq -r ".vars[$k]" /github/workspace/variables.json);
 
     echo $value
-    key=$(jq -r '.key' <<< "$value");
+    key=$(jq '.key' <<< "$value");
     echo $key
     #value=$(jq -r '.value' <<< "$value");
     #sensitive=$(jq -r '.sensitive' <<< "$value");
