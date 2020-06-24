@@ -2,8 +2,13 @@
   "vars": [
     {
       "key": "my-key2",
-      "value": "toto",
+      "value": "titi",
       "sensitive": "false"
+    },
+    {
+      "key": "my-key3",
+      "value": "1234567890",
+      "sensitive": "true"
     }
   ]
 }
