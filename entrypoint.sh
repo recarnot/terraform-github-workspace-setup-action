@@ -14,6 +14,9 @@ echo "::set-output name=workspace_id::$wid"
 #Clean existing variables
 curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/workspaces/$wid/vars" > vars.json
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
+
+echo "Remove $x variables"
+
 for (( i=0; i<$x; i++ ))
 do
   curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")"
