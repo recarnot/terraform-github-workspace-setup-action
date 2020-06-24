@@ -1,0 +1,9 @@
+{
+  "vars": [
+    {
+      "key": "my-key2",
+      "value": "toto",
+      "sensitive": "false"
+    }
+  ]
+}

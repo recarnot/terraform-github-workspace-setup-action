@@ -12,6 +12,7 @@ echo "::set-output name=workspace_id::$wid"
 
 
 #ESCAPED_VALUE=$(echo $2 | sed -e 's/[]\/$*.^[]/\\&/g');
+#sed -e "s/T_KEY/my-key/" -e "s/my-hcl/false/" -e "s/T_VALUE/romain/" -e "s/T_SECURED/false/" -e "s/T_WSID/$wid/" < ./template/variable.payload  > variable.json
+#curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --data @variable.json "https://app.terraform.io/api/v2/vars"
 
-sed -e "s/T_KEY/my-key/" -e "s/my-hcl/false/" -e "s/T_VALUE/romain/" -e "s/T_SECURED/false/" -e "s/T_WSID/$wid/" < ./template/variable.payload  > variable.json
-curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --data @variable.json "https://app.terraform.io/api/v2/vars"
+cat /github/workspace/variables.json
