@@ -15,7 +15,18 @@ jobs:
           organization: ${{ secrets.TF_ORGANIZATION }}
           workspace: "my-workspace2"
           token: ${{ secrets.TF_API_TOKEN }}
-
+          vars: '
+            {
+              "key": "my-key",
+              "value": "my-value",
+              "sensitive": "false"
+            },
+            {
+              "key": "my-secret",
+              "value": "${{ secrets.TF_API_TOKEN }}",
+              "sensitive": "true"
+            }
+          '
 
       - name: Get the Workspace ID
         run: echo "The workspace ID is ${{ steps.workspace.outputs.workspace_id }}"
