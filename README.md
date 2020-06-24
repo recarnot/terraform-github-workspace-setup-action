@@ -1,6 +1,7 @@
 # Terraform Cloud/Enterprise workspace setup
 **GitHub Action** to set up **Terraform Cloud/Enterprise** workspace
 
+![Setup Workspace](https://github.com/recarnot/terraform-github-workspace-setup-action/workflows/Setup%20Workspace/badge.svg)
 
 
 ## Inputs
@@ -10,6 +11,7 @@
 | organization | Terraform Organization name    | true     |
 | workspace    | Terraform Workspace name       | true     |
 | token        | Terraform API token            | true     |
+| hostname     | Terraform Hostname             | false    |
 | vars         | Workspace variables definition | false    |
 
 
