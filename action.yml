@@ -26,3 +26,6 @@ runs:
     - ${{ inputs.workspace }}
     - ${{ inputs.token }}
     - ${{ inputs.vars }}
+branding:
+  icon: 'check-square'
+  color: 'blue'
