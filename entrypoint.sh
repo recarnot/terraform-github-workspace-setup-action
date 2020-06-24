@@ -19,10 +19,10 @@ echo "::set-output name=workspace_id::$wid"
 for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     value=$(jq -r ".vars[$k]" /github/workspace/variables.json);
 
-    key=$(echo "$value" | jq '.key')
-    raw_value=$(echo "$value" | jq '.value')
+    key=$(echo $value | jq '.key')
+    raw_value=$(echo $value | jq '.value')
     escaped_value=$(echo $raw_value | sed -e 's/[]\/$*.^[]/\\&/g');
-    sensitive=$(echo "$value" | jq '.sensitive')
+    sensitive=$(echo $value | jq '.sensitive')
 
     echo $key
     echo $escaped_value
