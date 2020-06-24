@@ -1,3 +1,5 @@
+name: 'Setup Workspace'
+
 on: [push]
 
 jobs:
