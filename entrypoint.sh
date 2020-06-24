@@ -5,7 +5,7 @@ echo "Terraform Workspace: $2"
 echo "{ \"vars\":[ $4 ]}" > variables.json
 
 #Create workspace
-sed "s/T_WS/$2/" < ./template/workspace.payload > workspace.json
+sed "s/T_WS/$2/" < ./workspace.payload > workspace.json
 curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://app.terraform.io/api/v2/organizations/$1/workspaces" > workspace_result
 
 #Retreive Workspace ID
@@ -31,6 +31,6 @@ for k in $(jq '.vars | keys | .[]' variables.json); do
     escaped_value=$(echo $raw_value | sed -e 's/[]\/$*.^[]/\\&/g');
     sensitive=$(echo $value | jq '.sensitive')
 
-    sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < ./template/variable.payload  > paylaod.json
+    sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < ./variable.payload  > paylaod.json
     curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://app.terraform.io/api/v2/workspaces/$wid/vars"
 done
