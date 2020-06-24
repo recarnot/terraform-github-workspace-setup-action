@@ -1,10 +1,10 @@
 #!/bin/sh -l
 
-TF_ORGA= $1
-TF_WS= $2
-TF_TOKEN = $3
+TF_ORGA=$(echo $1)
+TF_WS=$(echo $2)
+TF_TOKEN=$(echo $3)
 echo "{ \"vars\":[ $4 ]}" > variables.json
-TF_HOST= $5
+TF_HOST=$(echo $5)
 
 #Create workspace
 sed "s/T_WS/$TF_WS/" < /tmp/workspace.payload > workspace.json
