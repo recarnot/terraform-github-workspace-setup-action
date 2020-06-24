@@ -23,11 +23,12 @@ for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     value=$(jq -r '.value' <<< "$value");
     sensitive=$(jq -r '.sensitive' <<< "$value");
     printf '%s\t%s\t%s\n' "$key" "$value" "$sensitive";
-done | column -t -s$'\t
+done | column -t -s$'\t'
 
-x=$(cat /github/workspace/variables.json | jq -r ".vars[].key" | wc -l | awk '{print $1}')
-for (( i=0; i<$x; i++ ))
-do
-  ESCAPED_VALUE=$(echo $2 | sed -e 's/[]\/$*.^[]/\\&/g')
-  curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/vars/$(cat vars.json | jq -r ".data[$i].id")
-done
+
+#x=$(cat /github/workspace/variables.json | jq -r ".vars[].key" | wc -l | awk '{print $1}')
+#for (( i=0; i<$x; i++ ))
+#do
+#  ESCAPED_VALUE=$(echo $2 | sed -e 's/[]\/$*.^[]/\\&/g')
+#  curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE https://app.terraform.io/api/v2/vars/$(cat vars.json | jq -r ".data[$i].id")
+#done
