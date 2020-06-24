@@ -3,7 +3,7 @@
 echo "Terraform Organization: $1"
 echo "Terraform Workspace: $2"
 
-cat $4
+cat echo $4 | jq '.vars'
 
 #Create workspace
 sed "s/T_WS/$2/" < ./template/workspace.payload > workspace.json
