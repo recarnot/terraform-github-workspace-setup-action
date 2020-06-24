@@ -16,7 +16,6 @@ echo "::set-output name=workspace_id::$wid"
 curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" "https://app.terraform.io/api/v2/workspaces/$wid/vars" > vars.json
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
 i=0
-
 while [ $i -lt $x ]
 do
   curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")"
