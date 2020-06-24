@@ -8,7 +8,7 @@ TF_HOST=$(echo $5)
 
 echo -e "\n Hostname=$TF_HOST"
 echo -e "\n Organisation=$TF_ORGA"
-echo -e "\n Workspace=$TF_TF_WS"
+echo -e "\n Workspace=$TF_WS"
 
 #Create workspace
 sed "s/T_WS/$TF_WS/" < /tmp/workspace.payload > workspace.json
