@@ -3,6 +3,8 @@
 echo "Terraform Organization: $1"
 echo "Terraform Workspace: $2"
 
+cat $4
+
 #Create workspace
 sed "s/T_WS/$2/" < ./template/workspace.payload > workspace.json
 curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://app.terraform.io/api/v2/organizations/$1/workspaces" > workspace_result

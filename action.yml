@@ -11,6 +11,10 @@ inputs:
   token:
     description: 'Terraform API token'
     required: true
+  vars:
+    description: 'Variables to create in workspace'
+    required: false
+    default: '{"vars": []}'
 outputs:
   workspace_id:
     description: 'The created or updated Terraform workspace ID'
@@ -21,3 +25,4 @@ runs:
     - ${{ inputs.organization }}
     - ${{ inputs.workspace }}
     - ${{ inputs.token }}
+    - ${{ inputs.vars }}

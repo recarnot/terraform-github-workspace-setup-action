@@ -8,7 +8,7 @@
     {
       "key": "my-key3",
       "value": "${{ secrets.TF_API_TOKEN }}",
-      "sensitive": "true"
+      "sensitive": "false"
     }
   ]
 }
