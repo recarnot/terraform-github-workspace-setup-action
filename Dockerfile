@@ -1,8 +1,8 @@
 FROM alpine:3.10
 
-COPY entrypoint.sh .
-COPY variable.payload .
-COPY workspace.payload .
+COPY entrypoint.sh /entrypoint.sh
+COPY variable.payload /tmp/variable.payload
+COPY workspace.payload /tmp/workspace.payload
 
 RUN apk update && \
     apk add curl jq
