@@ -24,7 +24,7 @@ for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     #value=$(jq -r '.value' <<< "$value");
     #sensitive=$(jq -r '.sensitive' <<< "$value");
     #printf '%s\t%s\t%s\n' "$key" "$value" "$sensitive";
-done | column -t -s$'\t'
+done
 
 
 #x=$(cat /github/workspace/variables.json | jq -r ".vars[].key" | wc -l | awk '{print $1}')
