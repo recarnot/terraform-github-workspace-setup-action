@@ -15,20 +15,20 @@ jobs:
           organization: ${{ secrets.TF_ORGANIZATION }}
           workspace: "my-workspace2"
           token: ${{ secrets.TF_API_TOKEN }}
-          vars: '{
-                   "vars": [
+          vars: "{
+                   \"vars\": [
             {
-              "key": "my-key2",
-              "value": "titi",
-              "sensitive": "false"
+              \"key\": \"my-key2\",
+              \"value\": \"titi\",
+              \"sensitive\": \"false\"
             },
             {
-              "key": "my-key3",
-              "value": ${{ secrets.TF_API_TOKEN }},
-              "sensitive": "false"
+              \"key\": \"my-key3\",
+              \"value\": \"${{ secrets.TF_API_TOKEN }}\",
+              \"sensitive\": \"false\"
             }
           ]
-        }'
+        }"
 
       - name: Get the Workspace ID
         run: echo "The workspace ID is ${{ steps.workspace.outputs.workspace_id }}"
