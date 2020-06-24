@@ -16,7 +16,7 @@ curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd
 x=$(cat vars.json | jq -r ".data[].id" | wc -l | awk '{print $1}')
 for (( i=0; i<$x; i++ ))
 do
-  curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")"
+  curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request DELETE "https://app.terraform.io/api/v2/workspaces/$wid/vars/$(cat vars.json | jq -r ".data[$i].id")"
 done
 
 #Create variables
