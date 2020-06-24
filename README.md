@@ -57,7 +57,7 @@ jobs:
 
       - name: setup workspace
         id: workspace
-        uses: recarnot/terraform-github-workspace-setup@master
+        uses: recarnot/terraform-github-workspace-setup-action@master
         with:
           organization: ${{ secrets.TF_ORGANIZATION }}
           workspace: "my-workspace-name"
