@@ -13,7 +13,7 @@ jobs:
         uses: ./
         with:
           organization: ${{ secrets.TF_ORGANIZATION }}
-          workspace: "my-workspace"
+          workspace: "my-workspace2"
           token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Get the Workspace ID
