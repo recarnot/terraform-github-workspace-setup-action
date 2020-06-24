@@ -6,10 +6,6 @@ TF_TOKEN=$(echo $3)
 echo "{ \"vars\":[ $4 ]}" > variables.json
 TF_HOST=$(echo $5)
 
-echo -e "\n Hostname=$TF_HOST"
-echo -e "\n Organisation=$TF_ORGA"
-echo -e "\n Workspace=$TF_WS"
-
 #Create workspace
 sed "s/T_WS/$TF_WS/" < /tmp/workspace.payload > workspace.json
 curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @workspace.json "https://$TF_HOST/api/v2/organizations/$TF_ORGA/workspaces" > workspace_result
@@ -40,5 +36,3 @@ for k in $(jq '.vars | keys | .[]' variables.json); do
     sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < /tmp/variable.payload  > paylaod.json
     curl --header "Authorization: Bearer $TF_TOKEN" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://$TF_HOST/api/v2/workspaces/$wid/vars"
 done
-
-echo -e "\n Workspace ID=$wid"
