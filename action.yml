@@ -2,6 +2,10 @@
 name: 'Terraform Workspace setup'
 description: 'Setup a Terraform Cloud/Enterprise workspace'
 inputs:
+  hostname:
+    description: 'Terraform hostname'
+    required: true
+    default: "app.terraform.io"
   organization:
     description: 'Terraform Organization name'
     required: true
@@ -26,6 +30,7 @@ runs:
     - ${{ inputs.workspace }}
     - ${{ inputs.token }}
     - ${{ inputs.vars }}
+    - ${{ inputs.hostname }}
 branding:
   icon: 'check-square'
   color: 'blue'
