@@ -24,6 +24,13 @@ for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
     escaped_value=$(echo $raw_value | sed -e 's/[]\/$*.^[]/\\&/g');
     sensitive=$(echo "$value" | jq '.sensitive')
 
-    sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < ./template/variable.payload  > variable.json
-    curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --data @variable.json "https://app.terraform.io/api/v2/vars"
+    echo $key
+    echo $escaped_value
+    echo $sensitive
+
+    sed -e "s/T_KEY/$key/" -e "s/my-hcl/false/" -e "s/T_VALUE/$escaped_value/" -e "s/T_SECURED/$sensitive/" -e "s/T_WSID/$wid/" < ./template/variable.payload  > paylaod.json
+
+    cat paylaod.json
+
+    curl --header "Authorization: Bearer $3" --header "Content-Type: application/vnd.api+json" --request POST --data @paylaod.json "https://app.terraform.io/api/v2/workspaces/$wid/vars"
 done
