@@ -24,7 +24,7 @@ jobs:
             },
             {
               "key": "my-secret",
-              "value": ${{ secrets.TF_API_TOKEN }},
+              "value": "${{ secrets.TF_API_TOKEN }}",
               "sensitive": "false"
             }
           ]
