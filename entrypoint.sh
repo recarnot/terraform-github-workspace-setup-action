@@ -3,7 +3,7 @@
 echo "Terraform Organization: $1"
 echo "Terraform Workspace: $2"
 
-echo $4
+echo $4 > variables.json
 
 #Create workspace
 sed "s/T_WS/$2/" < ./template/workspace.payload > workspace.json
@@ -25,8 +25,8 @@ do
 done
 
 #Create variables
-for k in $(jq '.vars | keys | .[]' /github/workspace/variables.json); do
-    value=$(jq -r ".vars[$k]" /github/workspace/variables.json);
+for k in $(jq '.vars | keys | .[]' variables.json); do
+    value=$(jq -r ".vars[$k]" variables.json);
 
     key=$(echo $value | jq '.key')
     raw_value=$(echo $value | jq '.value')
