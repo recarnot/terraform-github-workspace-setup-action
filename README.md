@@ -2,7 +2,9 @@
 **GitHub Action** to set up **Terraform Cloud/Enterprise** workspace
 
 <p align="left">
-  <a href="https://github.com/recarnot/terraform-github-workspace-setup-action/actions"><img alt="Continuous Integration" src="https://github.com/recarnot/terraform-github-workspace-setup-action/workflows/Setup%20Workspace/badge.svg" /></a>
+<a href="https://github.com/recarnot/terraform-github-workspace-setup-action/"><img alt="Terraform version" src="https://img.shields.io/badge/Terraform-%3E%3D0.12-orange" /></a>
+<a href="https://registry.terraform.io/modules/recarnot/cicd-bootstrap/github/"><img alt="Release" src="https://img.shields.io/github/v/release/recarnot/terraform-github-workspace-setup-action" /></a>
+<a href="https://github.com/recarnot/terraform-github-workspace-setup-action/actions"><img alt="Continuous Integration" src="https://github.com/recarnot/terraform-github-workspace-setup-action/workflows/Setup%20Workspace/badge.svg" /></a>
 </p>
 
 ## Inputs
